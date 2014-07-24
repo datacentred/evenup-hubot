@@ -31,6 +31,16 @@ class hubot::config {
     content => template("hubot/${hubot::params::hubot_init}"),
     notify  => Class['hubot::service']
   }
+  
+  file { "${::hubot::root_dir}/${::hubot::bot_name}/hubot.env":
+    ensure  => 'present',
+    owner   => 'hubot',
+    group   => 'hubot',
+    mode    => '0440',
+    content => template('hubot/hubot.env.erb'),
+    notify  => Class['hubot::service'],
+    require => Exec['Hubot init'],
+  }
 
   if $::hubot::git_source {
     require 'git'
@@ -85,16 +95,6 @@ class hubot::config {
       user        => 'hubot',
       group       => 'hubot',
       logoutput   => 'on_failure',
-    }
-
-    file { "${::hubot::root_dir}/${::hubot::bot_name}/hubot.env":
-      ensure  => 'present',
-      owner   => 'hubot',
-      group   => 'hubot',
-      mode    => '0440',
-      content => template('hubot/hubot.env.erb'),
-      notify  => Class['hubot::service'],
-      require => Exec['Hubot init'],
     }
 
     file { "${::hubot::root_dir}/${::hubot::bot_name}/hubot-scripts.json":
