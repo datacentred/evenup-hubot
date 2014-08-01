@@ -11,7 +11,7 @@ env <%= "#{k}=\"#{v}\"" %>
 <% end -%>
 
 pre-start script
-  npm install
+  npm install
 end script
 
 exec <%= scope.lookupvar('hubot::root_dir') %>/<%= scope.lookupvar('hubot::bot_name') %>/node_modules/.bin/hubot --adapter <%= scope.lookupvar('hubot::adapter') %>
