@@ -23,7 +23,7 @@ class hubot::config {
   $scripts = $::hubot::scripts
   $external_scripts = $::hubot::external_scripts
   $dependencies = $::hubot::dependencies
-  file { '/etc/init.d/hubot':
+  file { '/etc/init/hubot.conf':
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',

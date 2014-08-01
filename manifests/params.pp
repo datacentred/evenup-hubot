@@ -33,7 +33,7 @@ class hubot::params {
 
   case $::operatingsystem {
     'Ubuntu': {
-      $hubot_init         = "hubot.init.${::operatingsystem}.erb"
+      $hubot_init         = "hubot.upstart.erb"
       $nodejs_manage_repo = true
     }
     default: {
