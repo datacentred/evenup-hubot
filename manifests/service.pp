@@ -19,11 +19,11 @@ class hubot::service {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  service { "${hubot::params::bot_name}":
+  service { "${hubot::bot_name}":
     ensure     => $::hubot::service_ensure_real,
     enable     => $::hubot::service_enable_real,
     hasrestart => true,
-    require => File["/etc/init/${hubot::params::bot_name}.conf"],
+    require => File["/etc/init/${hubot::bot_name}.conf"],
   }
 
 }
