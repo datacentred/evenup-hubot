@@ -6,6 +6,7 @@ setgid hubot
 
 chdir <%= scope.lookupvar('hubot::root_dir') %>/<%= scope.lookupvar('hubot::bot_name') %>
 
+env HOME=<%= scope.lookupvar('hubot::root_dir') %>
 <% @exports.sort_by{|k,v| k}.each do |k,v| -%>
 env <%= "#{k}=\"#{v}\"" %>
 <% end -%>
