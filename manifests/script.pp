@@ -50,7 +50,7 @@ define hubot::script(
     ensure  => 'file',
     owner   => 'hubot',
     group   => 'hubot',
-    mode    => '0444',
+    mode    => '0400',
     source  => $source,
     require => Class['hubot::config'],
   }
